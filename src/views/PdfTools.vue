@@ -1,62 +1,57 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
+
+const base = import.meta.env.BASE_URL ?? '/'
+
+const tools = [
+  {
+    href: `${base}tools/PDF7.html`,
+    icon: '📦',
+    title: '离线 PDF 工具箱',
+    desc: '合并、拆分、旋转、删除<br>转图片与页面重排',
+  },
+  {
+    href: `${base}tools/PDFduikai.html`,
+    icon: '📖',
+    title: '对开页 PDF 拆分',
+    desc: '拖拽分割线实时调整<br>逐页自定义左右/上下切分',
+  },
+  {
+    href: `${base}tools/PDFjiaotihebing.html`,
+    icon: '🔀',
+    title: '交替合并 PDF',
+    desc: '多文件按页轮流穿插<br>适合对页合并场景',
+  },
+]
 </script>
 
 <template>
-  <div class="home">
+  <div class="pdf-tools">
     <div class="bg-animate" aria-hidden="true" />
     <header class="header">
-      <h3>✨ 仅为方便个人使用，如有问题请自行承担风险</h3>
+      <RouterLink to="/" class="back-link">← 返回首页</RouterLink>
+      <h1>PDF 常用工具</h1>
+      <p class="subtitle">以下为独立离线页面，在浏览器本地处理，不上传文件</p>
     </header>
     <div class="tools-container">
-      <RouterLink to="/fp" class="tool-link">
+      <a
+        v-for="tool in tools"
+        :key="tool.href"
+        :href="tool.href"
+        class="tool-link"
+      >
         <div class="tool-card">
-          <div class="tool-icon">🧾</div>
-          <div class="tool-title">发票打印</div>
-          <div class="tool-desc">简洁高效的发票排版工具<br>支持快速生成标准页面</div>
-        </div>
-      </RouterLink>
-      <RouterLink to="/jt" class="tool-link">
-        <div class="tool-card">
-          <div class="tool-icon">🖼️</div>
-          <div class="tool-title">手机截图打印</div>
-          <div class="tool-desc">批量智能排版助手<br>支持裁剪线与多种布局方案</div>
-        </div>
-      </RouterLink>
-      <RouterLink to="/pdf-tools" class="tool-link">
-        <div class="tool-card">
-          <div class="tool-icon">📦</div>
-          <div class="tool-title">PDF常用工具</div>
-          <div class="tool-desc">离线工具箱、对开页拆分<br>交替合并等 PDF 处理</div>
-        </div>
-      </RouterLink>
-      <a href="https://fwd.topmer.top/" class="tool-link" target="_blank" rel="noopener noreferrer">
-        <div class="tool-card">
-          <div class="tool-icon">📊</div>
-          <div class="tool-title">FWD数据处理</div>
-          <div class="tool-desc">.mdb文件快速处理<br>支持一键导出报告数据</div>
+          <div class="tool-icon">{{ tool.icon }}</div>
+          <div class="tool-title">{{ tool.title }}</div>
+          <div class="tool-desc" v-html="tool.desc" />
         </div>
       </a>
-      <a href="https://dpm.topmer.top/" class="tool-link" target="_blank" rel="noopener noreferrer">
-        <div class="tool-card">
-          <div class="tool-icon">📈</div>
-          <div class="tool-title">贯入仪数据处理</div>
-          <div class="tool-desc">CSV 可视化与数据分析<br>折线图、统计与导出</div>
-        </div>
-      </a>
-      <div class="tool-link tool-link--placeholder" aria-hidden="true">
-        <div class="tool-card tool-card--placeholder">
-          <div class="tool-icon">➕</div>
-          <div class="tool-title">敬请期待</div>
-          <div class="tool-desc">更多工具即将上线<br>预留位置</div>
-        </div>
-      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.home {
+.pdf-tools {
   min-height: 100dvh;
   width: 100%;
   display: flex;
@@ -102,10 +97,32 @@ import { RouterLink } from 'vue-router'
   z-index: 1;
 }
 
-.header h3 {
-  font-size: var(--font-size-lg);
+.back-link {
+  display: inline-block;
+  margin-bottom: var(--spacing-lg);
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  transition: background var(--transition-medium);
+}
+
+.back-link:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.header h1 {
+  font-size: var(--font-size-xxl);
   color: var(--color-white);
-  text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: var(--spacing-sm);
+}
+
+.subtitle {
+  font-size: var(--font-size-sm);
+  color: rgba(255, 255, 255, 0.85);
   line-height: 1.5;
 }
 
@@ -114,7 +131,7 @@ import { RouterLink } from 'vue-router'
   grid-template-columns: repeat(3, 1fr);
   gap: var(--spacing-lg);
   width: 100%;
-  max-width: 720px;
+  max-width: 780px;
   padding: 0 var(--spacing-xl);
   justify-items: center;
   position: relative;
@@ -131,9 +148,9 @@ import { RouterLink } from 'vue-router'
 
 .tool-card {
   width: 100%;
-  max-width: 220px;
-  height: 220px;
-  background: rgba(255,255,255,0.7);
+  max-width: 240px;
+  min-height: 220px;
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-radius: var(--border-radius-large);
@@ -144,14 +161,14 @@ import { RouterLink } from 'vue-router'
   text-align: center;
   padding: var(--spacing-lg);
   box-shadow: var(--shadow-light);
-  border: 1px solid rgba(255,255,255,0.3);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   cursor: pointer;
   transition: transform var(--transition-medium), background var(--transition-medium), box-shadow var(--transition-medium);
 }
 
 .tool-card:hover {
   transform: translateY(-8px);
-  background: rgba(255,255,255,0.85);
+  background: rgba(255, 255, 255, 0.85);
   box-shadow: var(--shadow-medium);
 }
 
@@ -166,7 +183,7 @@ import { RouterLink } from 'vue-router'
   border: 1px solid var(--color-white);
   border-radius: 50%;
   background: rgba(var(--color-primary-rgb), 0.1);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: border-color var(--transition-medium), background var(--transition-medium), transform var(--transition-medium), box-shadow var(--transition-medium);
 }
 
@@ -174,39 +191,6 @@ import { RouterLink } from 'vue-router'
   border-color: var(--color-secondary);
   background: rgba(var(--color-secondary-rgb), 0.15);
   transform: scale(1.05);
-}
-
-.tool-card--placeholder {
-  cursor: default;
-  background: rgba(255, 255, 255, 0.45);
-  border: 1px dashed rgba(255, 255, 255, 0.55);
-  box-shadow: none;
-}
-
-.tool-card--placeholder:hover {
-  transform: none;
-  background: rgba(255, 255, 255, 0.45);
-  box-shadow: none;
-}
-
-.tool-card--placeholder .tool-icon {
-  background: rgba(255, 255, 255, 0.35);
-  color: var(--color-medium-gray);
-}
-
-.tool-card--placeholder:hover .tool-icon {
-  border-color: var(--color-white);
-  background: rgba(255, 255, 255, 0.35);
-  transform: none;
-}
-
-.tool-card--placeholder .tool-title,
-.tool-card--placeholder .tool-desc {
-  color: var(--color-medium-gray);
-}
-
-.tool-link--placeholder {
-  pointer-events: none;
 }
 
 .tool-title {
@@ -223,32 +207,24 @@ import { RouterLink } from 'vue-router'
   padding: 0 var(--spacing-xs);
 }
 
-@media (max-width: 900px) {
-  .tools-container { grid-template-columns: repeat(2, 1fr); max-width: 520px; }
+@media (max-width: 768px) {
+  .tools-container {
+    grid-template-columns: 1fr;
+    max-width: 320px;
+  }
 }
 
-/* 手机端：保持 2×2 网格，纵向卡片（图标在上、文案居中），与参考布局一致 */
 @media (max-width: 480px) {
-  .home {
-    justify-content: center;
+  .pdf-tools {
     padding: max(var(--spacing-lg), env(safe-area-inset-top)) max(var(--spacing-md), env(safe-area-inset-right)) max(var(--spacing-lg), env(safe-area-inset-bottom)) max(var(--spacing-md), env(safe-area-inset-left));
   }
   .header { margin-bottom: var(--spacing-lg); }
-  .header h3 { font-size: var(--font-size-sm); padding: 0 var(--spacing-sm); }
-  .tools-container {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-    padding: 0 14px;
-    max-width: 100%;
-  }
+  .header h1 { font-size: var(--font-size-lg); }
+  .subtitle { font-size: 11px; padding: 0 var(--spacing-sm); }
   .tool-card {
     max-width: none;
     min-height: 168px;
-    height: auto;
     padding: 14px 10px 16px;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
     border-radius: 22px;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
     background: rgba(255, 255, 255, 0.82);
@@ -257,25 +233,13 @@ import { RouterLink } from 'vue-router'
     width: 52px;
     height: 52px;
     font-size: 1.65rem;
-    min-width: 52px;
-    min-height: 52px;
     margin-bottom: 10px;
     background: #fff;
     border: none;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
   }
-  .tool-title {
-    font-size: 15px;
-    margin-bottom: 6px;
-    text-align: center;
-    line-height: 1.3;
-  }
-  .tool-desc {
-    font-size: 11px;
-    text-align: center;
-    padding: 0 2px;
-    line-height: 1.45;
-  }
+  .tool-title { font-size: 15px; }
+  .tool-desc { font-size: 11px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

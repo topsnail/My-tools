@@ -44,13 +44,13 @@ import { RouterLink } from 'vue-router'
           <div class="tool-desc">CSV 可视化与数据分析<br>折线图、统计与导出</div>
         </div>
       </a>
-      <div class="tool-link tool-link--placeholder" aria-hidden="true">
-        <div class="tool-card tool-card--placeholder">
-          <div class="tool-icon">➕</div>
-          <div class="tool-title">敬请期待</div>
-          <div class="tool-desc">更多工具即将上线<br>预留位置</div>
+      <a href="https://ly.topmer.top/" class="tool-link" target="_blank" rel="noopener noreferrer">
+        <div class="tool-card">
+          <div class="tool-icon">💬</div>
+          <div class="tool-title">在线留言板</div>
+          <div class="tool-desc">分享想法与反馈<br>欢迎留下你的留言</div>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </template>
@@ -174,39 +174,6 @@ import { RouterLink } from 'vue-router'
   border-color: var(--color-secondary);
   background: rgba(var(--color-secondary-rgb), 0.15);
   transform: scale(1.05);
-}
-
-.tool-card--placeholder {
-  cursor: default;
-  background: rgba(255, 255, 255, 0.45);
-  border: 1px dashed rgba(255, 255, 255, 0.55);
-  box-shadow: none;
-}
-
-.tool-card--placeholder:hover {
-  transform: none;
-  background: rgba(255, 255, 255, 0.45);
-  box-shadow: none;
-}
-
-.tool-card--placeholder .tool-icon {
-  background: rgba(255, 255, 255, 0.35);
-  color: var(--color-medium-gray);
-}
-
-.tool-card--placeholder:hover .tool-icon {
-  border-color: var(--color-white);
-  background: rgba(255, 255, 255, 0.35);
-  transform: none;
-}
-
-.tool-card--placeholder .tool-title,
-.tool-card--placeholder .tool-desc {
-  color: var(--color-medium-gray);
-}
-
-.tool-link--placeholder {
-  pointer-events: none;
 }
 
 .tool-title {

@@ -5,10 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/copy-tools.cjs && node scripts/copy-pdf-assets.cjs && vue-tsc -b && vite build",
+    "build": "node scripts/copy-pdf-assets.cjs && vue-tsc -b && vite build",
     "build:prod": "npm run clean && npm run build",
     "preview": "vite preview",
-    "copy-tools": "node scripts/copy-tools.cjs",
     "copy-pdf": "node scripts/copy-pdf-assets.cjs",
     "postinstall": "node scripts/copy-pdf-assets.cjs",
     "clean": "node -e \"const fs=require('fs');const path=require('path');function rmdir(p){if(fs.existsSync(p)){fs.readdirSync(p).forEach(f=>{const cur=path.join(p,f);fs.statSync(cur).isDirectory()?rmdir(cur):fs.unlinkSync(cur);});fs.rmdirSync(p);}}rmdir('dist');['tsconfig.app.tsbuildinfo','tsconfig.node.tsbuildinfo'].forEach(f=>{if(fs.existsSync(f))fs.unlinkSync(f);});\""

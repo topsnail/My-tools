@@ -17,9 +17,6 @@ src/pdf-worker-asset.ts
 # ========== 开发文档（不参与 Vue 生产构建）==========
 src/logic.md
 
-# 根目录 tools/ 为本地副本；部署使用 public/tools/
-/tools/
-
 # ========== 重复配置（源码为 vite.config.ts）==========
 vite.config.js
 

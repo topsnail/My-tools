@@ -1,0 +1,83 @@
+:root {
+  --animation-bg-speed: 20s;
+  --gradient-angle: 45deg;
+  --color-primary: #4a6d7c;
+  --color-primary-rgb: 74, 109, 124;
+  --color-secondary: #147a61;
+  --color-secondary-rgb: 20, 122, 97;
+  --color-success: #6b9c70;
+  --color-warning: #e67e22;
+  --color-danger: #d35400;
+  --color-light-gray: #cbd5e1;
+  --color-medium-gray: #64748b;
+  --color-dark-gray: #2c3e50;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  /* 呼吸渐变：整体微提亮，降低对比度避免“发紫/发暗”观感 */
+  --color-gradient-start: #5b7f91;
+  --color-gradient-mid1: #a3ba9b;
+  --color-gradient-mid2: #98cc98;
+  --color-gradient-mid3: #e1a684;
+  --color-gradient-end: #1b8f6f;
+  --opacity-light: 0.3;
+  --opacity-medium: 0.5;
+  --opacity-heavy: 0.7;
+  --border-radius-small: 4px;
+  --border-radius-medium: 8px;
+  --border-radius-large: 12px;
+  --spacing-xs: 2px;
+  --spacing-sm: 4px;
+  --spacing-md: 8px;
+  --spacing-lg: 12px;
+  --spacing-xl: 16px;
+  --spacing-xxl: 20px;
+  --shadow-light: 0 4px 12px rgba(0,0,0,0.2);
+  --shadow-medium: 0 10px 30px rgba(0,0,0,0.3);
+  --shadow-heavy: 0 25px 50px rgba(0,0,0,0.2);
+  --font-size-xs: 9px;
+  --font-size-sm: 12px;
+  --font-size-md: 14px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+  --font-size-xxl: 20px;
+  --transition-fast: 0.1s ease;
+  --transition-medium: 0.2s ease;
+  --transition-slow: 0.8s ease;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  min-height: 100dvh;
+  width: 100%;
+  font-family: "Microsoft YaHei", "PingFang SC", "Helvetica Neue", sans-serif;
+}
+
+/* 全局打印重置：避免空白页、保证只打印预览区域 */
+@media print {
+  html,
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+    height: auto !important;
+    min-height: unset !important;
+    overflow: visible !important;
+  }
+  #app,
+  #app .app,
+  #app > * {
+    margin: 0 !important;
+    padding: 0 !important;
+    min-height: unset !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+  .toast-container {
+    display: none !important;
+  }
+  /* 仅保留预览网格参与布局，避免其它节点撑出空白页 */
+  #previewGrid {
+    display: block !important;
+  }
+}

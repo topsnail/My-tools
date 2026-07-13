@@ -1,0 +1,29 @@
+{
+  "name": "my-tools",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "node scripts/copy-pdf-assets.cjs && vue-tsc -b && vite build",
+    "build:prod": "npm run clean && npm run build",
+    "preview": "vite preview",
+    "copy-pdf": "node scripts/copy-pdf-assets.cjs",
+    "postinstall": "node scripts/copy-pdf-assets.cjs",
+    "clean": "node -e \"const fs=require('fs');const path=require('path');function rmdir(p){if(fs.existsSync(p)){fs.readdirSync(p).forEach(f=>{const cur=path.join(p,f);fs.statSync(cur).isDirectory()?rmdir(cur):fs.unlinkSync(cur);});fs.rmdirSync(p);}}rmdir('dist');['tsconfig.app.tsbuildinfo','tsconfig.node.tsbuildinfo'].forEach(f=>{if(fs.existsSync(f))fs.unlinkSync(f);});\""
+  },
+  "dependencies": {
+    "jspdf": "^2.5.2",
+    "pdfjs-dist": "^4.0.379",
+    "vue": "^3.5.13",
+    "vue-router": "^4.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "@vitejs/plugin-vue": "^5.2.0",
+    "@vue/tsconfig": "^0.5.1",
+    "typescript": "~5.6.3",
+    "vite": "^6.0.1",
+    "vue-tsc": "^2.1.10"
+  }
+}

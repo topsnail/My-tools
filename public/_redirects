@@ -1,0 +1,2 @@
+# SPA 回退：所有路径均返回 index.html，由前端路由处理（去掉 URL 中的 #）
+/*    /index.html   200

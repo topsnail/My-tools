@@ -1,0 +1,21 @@
+# Cloudflare Pages：仅为「内容稳定、无 hash」的静态资源加长缓存，不碰 HTML 与 SPA 路径，避免影响发版与路由
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/pdf.worker.min.mjs
+  Cache-Control: public, max-age=31536000, immutable
+
+/pdf.worker.min.js
+  Cache-Control: public, max-age=31536000, immutable
+
+/cmaps/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/standard_fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/favicon.svg
+  Cache-Control: public, max-age=604800
+
+/*
+  X-Content-Type-Options: nosniff

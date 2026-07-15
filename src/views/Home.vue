@@ -6,7 +6,8 @@ import { RouterLink } from 'vue-router'
   <div class="home">
     <div class="bg-animate" aria-hidden="true" />
     <header class="header">
-      <h3>✨ 仅为方便个人使用，如有问题请自行承担风险</h3>
+      <h1 class="brand">My tools</h1>
+      <p class="disclaimer">✨ 仅为方便个人使用，如有问题请自行承担风险</p>
     </header>
     <div class="tools-container">
       <RouterLink to="/fp" class="tool-link">
@@ -102,10 +103,20 @@ import { RouterLink } from 'vue-router'
   z-index: 1;
 }
 
-.header h3 {
-  font-size: var(--font-size-lg);
+.brand {
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
   color: var(--color-white);
-  text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.25);
+  margin-bottom: var(--spacing-md);
+  line-height: 1.2;
+}
+
+.disclaimer {
+  font-size: var(--font-size-lg);
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   line-height: 1.5;
 }
 
@@ -201,7 +212,8 @@ import { RouterLink } from 'vue-router'
     padding: max(var(--spacing-lg), env(safe-area-inset-top)) max(var(--spacing-md), env(safe-area-inset-right)) max(var(--spacing-lg), env(safe-area-inset-bottom)) max(var(--spacing-md), env(safe-area-inset-left));
   }
   .header { margin-bottom: var(--spacing-lg); }
-  .header h3 { font-size: var(--font-size-sm); padding: 0 var(--spacing-sm); }
+  .brand { font-size: 1.75rem; }
+  .disclaimer { font-size: var(--font-size-sm); padding: 0 var(--spacing-sm); }
   .tools-container {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;

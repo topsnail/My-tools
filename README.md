@@ -1,6 +1,6 @@
-# my tools - 打印工具
+# My tools
 
-基于 **Vue 3 (Composition API)** + **TypeScript** + **Vite** 的打印工具集合。原 `FapiaoPrint` 文件夹已弃用，请使用本工程。
+基于 **Vue 3 (Composition API)** + **TypeScript** + **Vite** 的个人工具集合。原 `FapiaoPrint` 文件夹已弃用，请使用本工程。
 
 ## 功能
 

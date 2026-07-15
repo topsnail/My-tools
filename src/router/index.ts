@@ -9,7 +9,7 @@ const PdfTools = () => import('@/views/PdfTools.vue')
 
 const base = (import.meta as any).env?.BASE_URL ?? '/'
 const routes: RouteRecordRaw[] = [
-  { path: '/', name: 'Home', component: Home, meta: { title: '打印工具' } },
+  { path: '/', name: 'Home', component: Home, meta: { title: 'My tools' } },
   { path: '/fp', name: 'FapiaoPrint', component: FapiaoPrint, meta: { title: '电子发票批量打印' } },
   { path: '/jt', name: 'JietuPrint', component: JietuPrint, meta: { title: '手机截图批量打印' } },
   { path: '/pdf-tools', name: 'PdfTools', component: PdfTools, meta: { title: 'PDF 常用工具' } },
